@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Classe En Main</title>
+<meta name="description" content="Une question, un projet sur mesure ? Contactez Classe En Main, je réponds sous 24h ouvrées.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0f2942;--navy-dark:#0a1d33;--gold:#c9a063;--gold-dark:#a88249;--cream:#fdfcf8;--surface:#fff;--text:#1a1a1a;--muted:#5a6470;--border:#e8e6e0;--shadow-sm:0 1px 3px rgba(15,41,66,.08);--shadow-md:0 8px 24px rgba(15,41,66,.1);--shadow-lg:0 20px 48px rgba(15,41,66,.15);--radius:8px;--radius-lg:16px;--max-w:1200px;--font-h:'Playfair Display',Georgia,serif;--font-b:'Inter',-apple-system,sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-b);font-size:16px;line-height:1.65;color:var(--text);background:var(--cream);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--navy);text-decoration:none;transition:.2s}
+a:hover{color:var(--gold-dark)}
+h1,h2,h3,h4{font-family:var(--font-h);font-weight:600;color:var(--navy);line-height:1.2;letter-spacing:-.01em}
+h1{font-size:clamp(2.2rem,5.5vw,4rem)}
+h2{font-size:clamp(1.7rem,3.8vw,2.6rem);margin-bottom:1rem}
+h3{font-size:1.3rem;margin-bottom:.5rem}
+p{margin-bottom:1rem;color:var(--muted)}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 1.5rem}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(253,252,248,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.5rem;max-width:var(--max-w);margin:0 auto}
+.logo{display:flex;align-items:center;gap:.7rem;font-family:var(--font-h);font-size:1.4rem;font-weight:600;color:var(--navy)}
+.logo-mark{width:40px;height:40px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-dark) 100%);color:var(--cream);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-h);font-size:1rem;font-weight:700;box-shadow:var(--shadow-sm)}
+.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center}
+.nav-links a{color:var(--text);font-size:.95rem;font-weight:500;position:relative;padding:.3rem 0}
+.nav-links a:hover,.nav-links a.active{color:var(--navy)}
+.nav-links a.active::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--gold);border-radius:2px}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem;color:var(--navy)}
+.nav-toggle svg{width:26px;height:26px}
+.btn{display:inline-block;padding:.95rem 2rem;border-radius:var(--radius);font-weight:600;font-size:.95rem;cursor:pointer;transition:.2s;border:1.5px solid transparent;text-align:center;font-family:inherit;letter-spacing:.01em}
+.btn-primary{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+.btn-primary:hover{background:var(--navy-dark);color:var(--cream);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.btn-outline{background:transparent;color:var(--navy);border-color:var(--navy)}
+.btn-outline:hover{background:var(--navy);color:var(--cream)}
+.eyebrow{display:inline-block;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-dark);font-weight:700;margin-bottom:1.2rem;padding:.4rem 1rem;background:rgba(201,160,99,.12);border-radius:100px}
+.page-header{padding:5rem 0 3rem;text-align:center;background:radial-gradient(ellipse at top,rgba(201,160,99,.08),transparent 60%),var(--cream)}
+.page-header p{max-width:600px;margin:1rem auto 0;font-size:1.05rem}
+section{padding:4rem 0}
+
+/* Contact specific */
+.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:3.5rem;max-width:1100px;margin:0 auto}
+.contact-info-card{background:var(--surface);padding:2rem;border-radius:var(--radius-lg);border:1px solid var(--border);margin-bottom:1.2rem;display:flex;gap:1rem;align-items:flex-start;transition:.3s}
+.contact-info-card:hover{border-color:var(--gold);box-shadow:var(--shadow-sm)}
+.contact-info-icon{width:44px;height:44px;background:linear-gradient(135deg,rgba(15,41,66,.1),rgba(201,160,99,.15));color:var(--navy);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-info-icon svg{width:22px;height:22px}
+.contact-info-card h3{font-family:var(--font-b);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--gold-dark);margin-bottom:.3rem}
+.contact-info-card p{margin:0;color:var(--text);font-weight:500}
+.contact-info-card p small{display:block;color:var(--muted);font-weight:400;font-size:.88rem;margin-top:.2rem}
+
+form{background:var(--surface);padding:2.5rem;border-radius:var(--radius-lg);border:1px solid var(--border);box-shadow:var(--shadow-sm)}
+.form-group{margin-bottom:1.4rem}
+label{display:block;font-size:.88rem;font-weight:600;margin-bottom:.5rem;color:var(--text)}
+label .req{color:var(--gold-dark)}
+input,textarea,select{width:100%;padding:.85rem 1rem;border:1.5px solid var(--border);border-radius:var(--radius);font-family:inherit;font-size:.95rem;background:var(--cream);color:var(--text);transition:.2s}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--navy);background:#fff}
+textarea{resize:vertical;min-height:140px}
+
+.reassure{background:#f7f4ec;padding:4rem 0;text-align:center}
+.reassure h2{margin-bottom:.5rem}
+.reassure-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;max-width:900px;margin:2.5rem auto 0}
+.reassure-item{padding:1rem}
+.reassure-item h3{font-family:var(--font-b);font-size:1rem;font-weight:600;color:var(--text);margin-bottom:.4rem}
+.reassure-item p{font-size:.92rem;margin:0}
+.reassure-item-icon{width:50px;height:50px;background:rgba(201,160,99,.15);color:var(--gold-dark);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
+.reassure-item-icon svg{width:24px;height:24px}
+
+/* Footer */
+.site-footer{background:var(--navy-dark);color:rgba(253,252,248,.7);padding:4rem 0 1.5rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem}
+.site-footer h4{color:var(--cream);font-family:var(--font-b);font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem}
+.site-footer ul{list-style:none}
+.site-footer ul li{margin-bottom:.5rem}
+.site-footer a{color:rgba(253,252,248,.7);font-size:.92rem}
+.site-footer a:hover{color:var(--gold)}
+.footer-brand .logo{color:var(--cream);margin-bottom:1rem}
+.footer-brand .logo-mark{background:var(--gold);color:var(--navy-dark)}
+.footer-brand p{color:rgba(253,252,248,.6);max-width:320px;font-size:.92rem}
+.footer-bottom{border-top:1px solid rgba(253,252,248,.1);padding-top:1.5rem;text-align:center;font-size:.85rem;color:rgba(253,252,248,.5)}
+.reveal{opacity:0;transform:translateY(20px);transition:.7s cubic-bezier(.2,.8,.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr;gap:2rem}.footer-grid{grid-template-columns:1fr;gap:2rem}section{padding:3rem 0}}
+@media(max-width:720px){.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--cream);flex-direction:column;padding:1rem 1.5rem 1.5rem;border-bottom:1px solid var(--border);box-shadow:var(--shadow-md);gap:1rem}.nav-links.open{display:flex}.nav-toggle{display:block}form{padding:1.5rem}}
+</style>
+</head>
+<body>
+<header class="site-header">
+<nav class="nav" aria-label="Navigation principale">
+<a href="index.html" class="logo"><span class="logo-mark">CM</span><span>Classe En Main</span></a>
+<button class="nav-toggle" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+<ul class="nav-links">
+<li><a href="index.html">Accueil</a></li>
+<li><a href="about.html">À propos</a></li>
+<li><a href="services.html">Services & Tarifs</a></li>
+<li><a href="contact.html">Contact</a></li>
+<li><a href="services.html" class="btn btn-primary" style="padding:.6rem 1.3rem;font-size:.9rem">Commencer</a></li>
+</ul>
+</nav>
+</header>
+
+<main>
+<section class="page-header">
+<div class="container">
+<span class="eyebrow">Contact</span>
+<h1>Discutons de votre projet</h1>
+<p>Une question, un besoin spécifique, un projet sur mesure ? Écrivez-moi — je réponds sous 24h ouvrées.</p>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="contact-grid">
+<div class="reveal">
+<div class="contact-info-card"><div class="contact-info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><h3>Courriel</h3><p><a href="mailto:classe-en-main@hotmail.com">classe-en-main@hotmail.com</a></p></div></div>
+<div class="contact-info-card"><div class="contact-info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><h3>Disponibilité</h3><p>Lundi au vendredi<small>9h–18h · réponse sous 24h ouvrées</small></p></div></div>
+<div class="contact-info-card"><div class="contact-info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div><div><h3>Format des séances</h3><p>100 % en visio<small>Zoom ou Google Meet · au choix</small></p></div></div>
+<div class="contact-info-card"><div class="contact-info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div><div><h3>Premier échange</h3><p>15 min offerts<small>Pour cerner vos besoins, sans engagement</small></p></div></div>
+</div>
+
+<form action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST" class="reveal">
+<div class="form-group"><label for="name">Nom complet <span class="req">*</span></label><input type="text" id="name" name="name" required></div>
+<div class="form-group"><label for="email">Courriel <span class="req">*</span></label><input type="email" id="email" name="email" required></div>
+<div class="form-group"><label for="subject">Sujet</label><select id="subject" name="subject"><option>Demande d'information</option><option>Coaching Essentiel (297 €)</option><option>Coaching Personnalisé (395 €)</option><option>Premium (599 €)</option><option>Demande sur mesure</option><option>Autre</option></select></div>
+<div class="form-group"><label for="message">Votre message <span class="req">*</span></label><textarea id="message" name="message" required placeholder="Parlez-moi de votre projet, vos objectifs, vos questions…"></textarea></div>
+<button type="submit" class="btn btn-primary" style="width:100%">Envoyer le message</button>
+<p style="font-size:.82rem;margin-top:1rem;color:var(--muted);text-align:center">🔒 Vos informations restent confidentielles. Aucun envoi promotionnel sans votre accord.</p>
+</form>
+</div>
+</div>
+</section>
+
+<section class="reassure">
+<div class="container">
+<div class="reveal">
+<span class="eyebrow">En toute sérénité</span>
+<h2>Pas de pression, juste un échange</h2>
+<p style="max-width:560px;margin:0 auto">Si vous n'êtes pas sûr·e, écrivez-moi pour un simple appel découverte. C'est gratuit et sans engagement — l'occasion de poser toutes vos questions.</p>
+</div>
+<div class="reassure-grid">
+<div class="reassure-item reveal"><div class="reassure-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Réponse rapide</h3><p>Je réponds personnellement à chaque message sous 24h ouvrées.</p></div>
+<div class="reassure-item reveal"><div class="reassure-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A5.5 5.5 0 0 1 12 4.6a5.5 5.5 0 0 1 8 5.6c0 7.3-8 11.8-8 11.8z"/></svg></div><h3>Sans engagement</h3><p>Aucun engagement à m'écrire. On voit ensemble si on est faits pour avancer.</p></div>
+<div class="reassure-item reveal"><div class="reassure-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><h3>Confidentialité</h3><p>Vos informations ne sont jamais partagées avec des tiers, jamais.</p></div>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="site-footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand">
+<div class="logo"><span class="logo-mark">CM</span><span>Classe En Main</span></div>
+<p>Coaching en ligne pour avancer à votre rythme, avec un accompagnement humain et professionnel.</p>
+</div>
+<div>
+<h4>Navigation</h4>
+<ul>
+<li><a href="index.html">Accueil</a></li>
+<li><a href="about.html">À propos</a></li>
+<li><a href="services.html">Services & Tarifs</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4>Contact</h4>
+<ul>
+<li><a href="mailto:classe-en-main@hotmail.com">classe-en-main@hotmail.com</a></li>
+<li>Lun–Ven · 9h–18h</li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">© <span id="year"></span> Classe En Main. Tous droits réservés.</div>
+</div>
+</footer>
+
+<script>
+document.querySelector('.nav-toggle').addEventListener('click',function(){var l=document.querySelector('.nav-links');l.classList.toggle('open');this.setAttribute('aria-expanded',l.classList.contains('open'))});
+var path=(window.location.pathname.split('/').pop()||'index.html');document.querySelectorAll('.nav-links a').forEach(function(a){if(a.getAttribute('href')===path)a.classList.add('active')});
+document.getElementById('year').textContent=new Date().getFullYear();
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+</script>
+</body>
+</html>

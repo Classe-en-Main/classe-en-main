@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À propos — Classe En Main</title>
+<meta name="description" content="Découvrez la mission, la méthode et les valeurs de Classe En Main, votre partenaire coaching en ligne.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0f2942;--navy-dark:#0a1d33;--gold:#c9a063;--gold-dark:#a88249;--cream:#fdfcf8;--surface:#fff;--text:#1a1a1a;--muted:#5a6470;--border:#e8e6e0;--shadow-sm:0 1px 3px rgba(15,41,66,.08);--shadow-md:0 8px 24px rgba(15,41,66,.1);--shadow-lg:0 20px 48px rgba(15,41,66,.15);--radius:8px;--radius-lg:16px;--max-w:1200px;--font-h:'Playfair Display',Georgia,serif;--font-b:'Inter',-apple-system,sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-b);font-size:16px;line-height:1.65;color:var(--text);background:var(--cream);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--navy);text-decoration:none;transition:.2s}
+a:hover{color:var(--gold-dark)}
+h1,h2,h3,h4{font-family:var(--font-h);font-weight:600;color:var(--navy);line-height:1.2;letter-spacing:-.01em}
+h1{font-size:clamp(2.2rem,5.5vw,4rem)}
+h2{font-size:clamp(1.7rem,3.8vw,2.6rem);margin-bottom:1rem}
+h3{font-size:1.3rem;margin-bottom:.5rem}
+p{margin-bottom:1rem;color:var(--muted)}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 1.5rem}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(253,252,248,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.5rem;max-width:var(--max-w);margin:0 auto}
+.logo{display:flex;align-items:center;gap:.7rem;font-family:var(--font-h);font-size:1.4rem;font-weight:600;color:var(--navy)}
+.logo-mark{width:40px;height:40px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-dark) 100%);color:var(--cream);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-h);font-size:1rem;font-weight:700;box-shadow:var(--shadow-sm)}
+.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center}
+.nav-links a{color:var(--text);font-size:.95rem;font-weight:500;position:relative;padding:.3rem 0}
+.nav-links a:hover,.nav-links a.active{color:var(--navy)}
+.nav-links a.active::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--gold);border-radius:2px}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem;color:var(--navy)}
+.nav-toggle svg{width:26px;height:26px}
+.btn{display:inline-block;padding:.95rem 2rem;border-radius:var(--radius);font-weight:600;font-size:.95rem;cursor:pointer;transition:.2s;border:1.5px solid transparent;text-align:center;font-family:inherit;letter-spacing:.01em}
+.btn-primary{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+.btn-primary:hover{background:var(--navy-dark);color:var(--cream);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.btn-outline{background:transparent;color:var(--navy);border-color:var(--navy)}
+.btn-outline:hover{background:var(--navy);color:var(--cream)}
+.btn-accent{background:var(--gold);color:#fff;border-color:var(--gold)}
+.btn-accent:hover{background:var(--gold-dark);border-color:var(--gold-dark);color:#fff;transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.eyebrow{display:inline-block;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-dark);font-weight:700;margin-bottom:1.2rem;padding:.4rem 1rem;background:rgba(201,160,99,.12);border-radius:100px}
+.page-header{padding:5rem 0 3rem;text-align:center;background:radial-gradient(ellipse at top,rgba(201,160,99,.08),transparent 60%),var(--cream)}
+section{padding:4rem 0}
+.section-alt{background:#f7f4ec}
+
+/* About specific */
+.story{max-width:780px;margin:0 auto;text-align:left}
+.story p{font-size:1.05rem;line-height:1.75}
+.story p:first-of-type::first-letter{font-family:var(--font-h);font-size:3.5rem;float:left;line-height:.9;padding:.3rem .6rem 0 0;color:var(--gold-dark);font-weight:700}
+.values-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.8rem}
+.value-card{background:var(--surface);padding:2rem;border-radius:var(--radius-lg);border:1px solid var(--border);transition:.3s;border-left:4px solid var(--gold)}
+.value-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.value-card h3{font-family:var(--font-b);font-size:1.1rem;font-weight:600;color:var(--text);margin-bottom:.6rem}
+.value-card p{margin:0;font-size:.95rem}
+.method-list{max-width:780px;margin:0 auto;list-style:none}
+.method-list li{padding:1.5rem 0 1.5rem 4rem;border-bottom:1px solid var(--border);position:relative}
+.method-list li:last-child{border-bottom:none}
+.method-list li::before{content:counter(method);counter-increment:method;position:absolute;left:0;top:1.5rem;width:48px;height:48px;background:linear-gradient(135deg,var(--navy),var(--navy-dark));color:var(--cream);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-h);font-weight:700;font-size:1.1rem}
+.method-list{counter-reset:method}
+.method-list h3{font-family:var(--font-b);font-size:1.1rem;font-weight:600;color:var(--text);margin-bottom:.4rem}
+.method-list p{margin:0;font-size:.97rem}
+.cta-strip{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-dark) 100%);color:var(--cream);text-align:center;padding:5rem 1.5rem;position:relative;overflow:hidden}
+.cta-strip::before{content:'';position:absolute;top:-50%;right:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(201,160,99,.15),transparent 70%);border-radius:50%}
+.cta-strip-content{position:relative;max-width:680px;margin:0 auto}
+.cta-strip h2{color:var(--cream);margin-bottom:1rem}
+.cta-strip p{color:rgba(253,252,248,.85);font-size:1.1rem;margin-bottom:2rem}
+.site-footer{background:var(--navy-dark);color:rgba(253,252,248,.7);padding:4rem 0 1.5rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem}
+.site-footer h4{color:var(--cream);font-family:var(--font-b);font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem}
+.site-footer ul{list-style:none}
+.site-footer ul li{margin-bottom:.5rem}
+.site-footer a{color:rgba(253,252,248,.7);font-size:.92rem}
+.site-footer a:hover{color:var(--gold)}
+.footer-brand .logo{color:var(--cream);margin-bottom:1rem}
+.footer-brand .logo-mark{background:var(--gold);color:var(--navy-dark)}
+.footer-brand p{color:rgba(253,252,248,.6);max-width:320px;font-size:.92rem}
+.footer-bottom{border-top:1px solid rgba(253,252,248,.1);padding-top:1.5rem;text-align:center;font-size:.85rem;color:rgba(253,252,248,.5)}
+.reveal{opacity:0;transform:translateY(20px);transition:.7s cubic-bezier(.2,.8,.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr;gap:2rem}section{padding:3rem 0}}
+@media(max-width:720px){.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--cream);flex-direction:column;padding:1rem 1.5rem 1.5rem;border-bottom:1px solid var(--border);box-shadow:var(--shadow-md);gap:1rem}.nav-links.open{display:flex}.nav-toggle{display:block}}
+</style>
+</head>
+<body>
+<header class="site-header">
+<nav class="nav" aria-label="Navigation principale">
+<a href="index.html" class="logo"><span class="logo-mark">CM</span><span>Classe En Main</span></a>
+<button class="nav-toggle" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+<ul class="nav-links">
+<li><a href="index.html">Accueil</a></li>
+<li><a href="about.html">À propos</a></li>
+<li><a href="services.html">Services & Tarifs</a></li>
+<li><a href="contact.html">Contact</a></li>
+<li><a href="services.html" class="btn btn-primary" style="padding:.6rem 1.3rem;font-size:.9rem">Commencer</a></li>
+</ul>
+</nav>
+</header>
+
+<main>
+<section class="page-header">
+<div class="container">
+<span class="eyebrow">À propos</span>
+<h1>Qui se cache derrière<br>Classe En Main ?</h1>
+</div>
+</section>
+
+<section>
+<div class="container story reveal">
+<p>Bienvenue chez <strong>Classe En Main</strong>. Mon rôle, c'est de vous accompagner dans votre progression — qu'elle soit scolaire, professionnelle ou personnelle. Pas de discours flou, pas de promesses creuses : une méthode claire, un cadre rassurant, et un objectif simple : vous aider à atteindre les vôtres.</p>
+<p>J'ai conçu cette plateforme parce que je crois qu'apprendre devrait être à la fois sérieux et bienveillant. Trop de personnes baissent les bras parce qu'elles se sentent seules, jugées, ou perdues face à un programme trop ambitieux. Ici, on prend le temps. On construit ensemble. Et on avance, à votre rythme.</p>
+<p>Que vous choisissiez la formule essentielle pour démarrer en douceur, ou le programme premium pour un accompagnement long terme, vous bénéficiez de la même attention, de la même rigueur et de la même bienveillance.</p>
+</div>
+</section>
+
+<section class="section-alt">
+<div class="container">
+<div style="text-align:center;max-width:680px;margin:0 auto 3rem" class="reveal">
+<span class="eyebrow">Ma philosophie</span>
+<h2>Quatre valeurs qui guident chaque accompagnement</h2>
+</div>
+<div class="values-grid">
+<div class="value-card reveal"><h3>Bienveillance</h3><p>Un cadre rassurant où chacun peut poser ses questions sans crainte d'être jugé. Le progrès passe par la confiance.</p></div>
+<div class="value-card reveal"><h3>Rigueur</h3><p>Des objectifs clairs, un suivi régulier, des résultats mesurables. Le sérieux comme socle de la progression.</p></div>
+<div class="value-card reveal"><h3>Adaptabilité</h3><p>Pas de méthode unique : chaque apprenant a la sienne. Je m'adapte à vous, pas l'inverse.</p></div>
+<div class="value-card reveal"><h3>Transparence</h3><p>Tarifs clairs, attentes partagées, communication ouverte. Vous savez toujours où vous en êtes.</p></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div style="text-align:center;max-width:680px;margin:0 auto 3rem" class="reveal">
+<span class="eyebrow">Ma méthode</span>
+<h2>Comment je vous accompagne</h2>
+</div>
+<ul class="method-list">
+<li class="reveal"><h3>Comprendre votre point de départ</h3><p>Avant tout, on prend le temps d'identifier vos objectifs, vos blocages et ce qui a déjà fonctionné — ou non — pour vous.</p></li>
+<li class="reveal"><h3>Construire un plan adapté</h3><p>À partir de là, on définit ensemble un parcours sur mesure : étapes claires, ressources adaptées, échéances réalistes.</p></li>
+<li class="reveal"><h3>Avancer avec un suivi régulier</h3><p>Vous travaillez à votre rythme avec les contenus vidéo, et on se retrouve en séance pour faire le point et lever les blocages.</p></li>
+<li class="reveal"><h3>Mesurer les progrès et ajuster</h3><p>À chaque étape, on évalue ce qui marche, on célèbre les avancées, et on ajuste la suite si nécessaire. Toujours en mouvement.</p></li>
+</ul>
+</div>
+</section>
+
+<section class="cta-strip">
+<div class="cta-strip-content">
+<h2>Prêt·e à faire le premier pas ?</h2>
+<p>Discutons de votre projet — sans engagement. Un simple échange suffit pour savoir si on est faits pour avancer ensemble.</p>
+<div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap"><a href="contact.html" class="btn btn-accent">Me contacter</a><a href="services.html" class="btn btn-outline" style="color:var(--cream);border-color:var(--cream)">Voir les formules</a></div>
+</div>
+</section>
+</main>
+
+<footer class="site-footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand">
+<div class="logo"><span class="logo-mark">CM</span><span>Classe En Main</span></div>
+<p>Coaching en ligne pour avancer à votre rythme, avec un accompagnement humain et professionnel.</p>
+</div>
+<div>
+<h4>Navigation</h4>
+<ul>
+<li><a href="index.html">Accueil</a></li>
+<li><a href="about.html">À propos</a></li>
+<li><a href="services.html">Services & Tarifs</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4>Contact</h4>
+<ul>
+<li><a href="mailto:classe-en-main@hotmail.com">classe-en-main@hotmail.com</a></li>
+<li>Lun–Ven · 9h–18h</li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">© <span id="year"></span> Classe En Main. Tous droits réservés.</div>
+</div>
+</footer>
+
+<script>
+document.querySelector('.nav-toggle').addEventListener('click',function(){var l=document.querySelector('.nav-links');l.classList.toggle('open');this.setAttribute('aria-expanded',l.classList.contains('open'))});
+var path=(window.location.pathname.split('/').pop()||'index.html');document.querySelectorAll('.nav-links a').forEach(function(a){if(a.getAttribute('href')===path)a.classList.add('active')});
+document.getElementById('year').textContent=new Date().getFullYear();
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+</script>
+</body>
+</html>

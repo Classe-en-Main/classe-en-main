@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services & Tarifs — Classe En Main</title>
+<meta name="description" content="Trois formules de coaching en ligne : Essentiel 297€, Personnalisé 395€, Premium 599€. Paiement sécurisé via PayPal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0f2942;--navy-dark:#0a1d33;--gold:#c9a063;--gold-dark:#a88249;--cream:#fdfcf8;--surface:#fff;--text:#1a1a1a;--muted:#5a6470;--border:#e8e6e0;--shadow-sm:0 1px 3px rgba(15,41,66,.08);--shadow-md:0 8px 24px rgba(15,41,66,.1);--shadow-lg:0 20px 48px rgba(15,41,66,.15);--radius:8px;--radius-lg:16px;--max-w:1200px;--font-h:'Playfair Display',Georgia,serif;--font-b:'Inter',-apple-system,sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-b);font-size:16px;line-height:1.65;color:var(--text);background:var(--cream);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--navy);text-decoration:none;transition:.2s}
+a:hover{color:var(--gold-dark)}
+h1,h2,h3,h4{font-family:var(--font-h);font-weight:600;color:var(--navy);line-height:1.2;letter-spacing:-.01em}
+h1{font-size:clamp(2.2rem,5.5vw,4rem)}
+h2{font-size:clamp(1.7rem,3.8vw,2.6rem);margin-bottom:1rem}
+h3{font-size:1.3rem;margin-bottom:.5rem}
+p{margin-bottom:1rem;color:var(--muted)}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 1.5rem}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(253,252,248,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.5rem;max-width:var(--max-w);margin:0 auto}
+.logo{display:flex;align-items:center;gap:.7rem;font-family:var(--font-h);font-size:1.4rem;font-weight:600;color:var(--navy)}
+.logo-mark{width:40px;height:40px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-dark) 100%);color:var(--cream);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-h);font-size:1rem;font-weight:700;box-shadow:var(--shadow-sm)}
+.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center}
+.nav-links a{color:var(--text);font-size:.95rem;font-weight:500;position:relative;padding:.3rem 0}
+.nav-links a:hover,.nav-links a.active{color:var(--navy)}
+.nav-links a.active::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--gold);border-radius:2px}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem;color:var(--navy)}
+.nav-toggle svg{width:26px;height:26px}
+.btn{display:inline-block;padding:.95rem 2rem;border-radius:var(--radius);font-weight:600;font-size:.95rem;cursor:pointer;transition:.2s;border:1.5px solid transparent;text-align:center;font-family:inherit;letter-spacing:.01em}
+.btn-primary{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+.btn-primary:hover{background:var(--navy-dark);color:var(--cream);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.btn-outline{background:transparent;color:var(--navy);border-color:var(--navy)}
+.btn-outline:hover{background:var(--navy);color:var(--cream)}
+.btn-accent{background:var(--gold);color:#fff;border-color:var(--gold)}
+.btn-accent:hover{background:var(--gold-dark);border-color:var(--gold-dark);color:#fff;transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.eyebrow{display:inline-block;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-dark);font-weight:700;margin-bottom:1.2rem;padding:.4rem 1rem;background:rgba(201,160,99,.12);border-radius:100px}
+.page-header{padding:5rem 0 3rem;text-align:center;background:radial-gradient(ellipse at top,rgba(201,160,99,.08),transparent 60%),var(--cream)}
+.page-header p{max-width:600px;margin:1rem auto 0;font-size:1.05rem}
+section{padding:4rem 0}
+.section-alt{background:#f7f4ec}
+
+/* Pricing */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.8rem;margin-bottom:3rem}
+.pricing-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2.2rem;display:flex;flex-direction:column;transition:.3s;position:relative}
+.pricing-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.pricing-card.featured{border:2px solid var(--gold);background:linear-gradient(180deg,#fff 0%,#fffaf0 100%);transform:scale(1.02)}
+.pricing-card.featured:hover{transform:scale(1.02) translateY(-6px)}
+.pricing-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:#fff;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;padding:.4rem 1rem;border-radius:100px;font-weight:700;white-space:nowrap}
+.pricing-card h3{font-family:var(--font-h);font-size:1.6rem;color:var(--navy);margin-bottom:.3rem}
+.pricing-tagline{color:var(--muted);font-size:.95rem;margin-bottom:1.4rem;min-height:42px}
+.pricing-price{font-family:var(--font-h);font-size:2.8rem;color:var(--navy);font-weight:700;line-height:1;margin-bottom:.3rem}
+.pricing-period{color:var(--muted);font-size:.9rem;margin-bottom:1.5rem}
+.pricing-divider{border-top:1px solid var(--border);margin:1.2rem 0}
+.pricing-card ul{list-style:none;margin-bottom:2rem;flex:1}
+.pricing-card ul li{padding:.55rem 0 .55rem 1.8rem;position:relative;color:var(--text);font-size:.95rem}
+.pricing-card ul li::before{content:'';position:absolute;left:0;top:.85rem;width:14px;height:14px;background:var(--gold);border-radius:50%;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='4'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-size:9px;background-repeat:no-repeat;background-position:center}
+
+/* Comparison table */
+.compare{max-width:900px;margin:0 auto;background:var(--surface);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid var(--border)}
+.compare-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;align-items:center;padding:1rem 1.5rem;border-bottom:1px solid var(--border)}
+.compare-row:last-child{border-bottom:none}
+.compare-row.head{background:var(--navy);color:var(--cream);font-family:var(--font-h);font-weight:600}
+.compare-row.head .compare-cell{color:var(--cream);text-align:center;font-size:1.05rem}
+.compare-cell{font-size:.95rem;text-align:center;color:var(--text)}
+.compare-cell:first-child{text-align:left;font-weight:500;color:var(--text)}
+.compare-cell .check{color:var(--gold)}
+.compare-cell .dash{color:var(--border)}
+
+/* FAQ */
+.faq{max-width:780px;margin:0 auto}
+.faq-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:.8rem;overflow:hidden;transition:.3s}
+.faq-item:hover{border-color:var(--gold)}
+.faq-question{width:100%;background:none;border:none;padding:1.3rem 1.5rem;text-align:left;font-family:inherit;font-size:1rem;font-weight:600;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-question:hover{color:var(--navy)}
+.faq-icon{font-size:1.5rem;color:var(--gold);transition:.3s;line-height:1;flex-shrink:0}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.faq-answer-inner{padding:0 1.5rem 1.3rem;color:var(--muted);line-height:1.7}
+
+/* CTA strip */
+.cta-strip{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-dark) 100%);color:var(--cream);text-align:center;padding:5rem 1.5rem;position:relative;overflow:hidden}
+.cta-strip::before{content:'';position:absolute;top:-50%;right:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(201,160,99,.15),transparent 70%);border-radius:50%}
+.cta-strip-content{position:relative;max-width:680px;margin:0 auto}
+.cta-strip h2{color:var(--cream);margin-bottom:1rem}
+.cta-strip p{color:rgba(253,252,248,.85);font-size:1.1rem;margin-bottom:2rem}
+
+/* Footer */
+.site-footer{background:var(--navy-dark);color:rgba(253,252,248,.7);padding:4rem 0 1.5rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem}
+.site-footer h4{color:var(--cream);font-family:var(--font-b);font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem}
+.site-footer ul{list-style:none}
+.site-footer ul li{margin-bottom:.5rem}
+.site-footer a{color:rgba(253,252,248,.7);font-size:.92rem}
+.site-footer a:hover{color:var(--gold)}
+.footer-brand .logo{color:var(--cream);margin-bottom:1rem}
+.footer-brand .logo-mark{background:var(--gold);color:var(--navy-dark)}
+.footer-brand p{color:rgba(253,252,248,.6);max-width:320px;font-size:.92rem}
+.footer-bottom{border-top:1px solid rgba(253,252,248,.1);padding-top:1.5rem;text-align:center;font-size:.85rem;color:rgba(253,252,248,.5)}
+.reveal{opacity:0;transform:translateY(20px);transition:.7s cubic-bezier(.2,.8,.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr;gap:2rem}section{padding:3rem 0}.pricing-card.featured{transform:none}.pricing-card.featured:hover{transform:translateY(-6px)}.compare-row{grid-template-columns:1.5fr 1fr 1fr 1fr;font-size:.85rem;padding:.8rem}}
+@media(max-width:720px){.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--cream);flex-direction:column;padding:1rem 1.5rem 1.5rem;border-bottom:1px solid var(--border);box-shadow:var(--shadow-md);gap:1rem}.nav-links.open{display:flex}.nav-toggle{display:block}.compare{font-size:.8rem}.compare-row{padding:.7rem .5rem}}
+</style>
+</head>
+<body>
+<header class="site-header">
+<nav class="nav" aria-label="Navigation principale">
+<a href="index.html" class="logo"><span class="logo-mark">CM</span><span>Classe En Main</span></a>
+<button class="nav-toggle" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+<ul class="nav-links">
+<li><a href="index.html">Accueil</a></li>
+<li><a href="about.html">À propos</a></li>
+<li><a href="services.html">Services & Tarifs</a></li>
+<li><a href="contact.html">Contact</a></li>
+<li><a href="#tarifs" class="btn btn-primary" style="padding:.6rem 1.3rem;font-size:.9rem">Commencer</a></li>
+</ul>
+</nav>
+</header>
+
+<main>
+<section class="page-header">
+<div class="container">
+<span class="eyebrow">Programmes & Tarifs</span>
+<h1>Choisissez la formule qui<br>vous correspond</h1>
+<p>Trois programmes pensés pour s'adapter à votre rythme et à vos objectifs. Paiement sécurisé via PayPal — accès envoyés par courriel sous 24h.</p>
+</div>
+</section>
+
+<section id="tarifs">
+<div class="container">
+<div class="pricing-grid">
+<div class="pricing-card reveal">
+<h3>Coaching Essentiel</h3>
+<p class="pricing-tagline">Idéal pour démarrer en douceur dans une dynamique de groupe.</p>
+<div class="pricing-price">297 €</div>
+<div class="pricing-period">Accès 30 jours</div>
+<div class="pricing-divider"></div>
+<ul>
+<li>Accès aux contenus vidéo (30 jours)</li>
+<li>Coaching de groupe</li>
+<li>Plateforme accessible 24/7</li>
+<li>Support par courriel</li>
+</ul>
+<a href="https://paypal.me/VOTRE_PAYPAL_ME/297EUR" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%">Choisir Essentiel</a>
+</div>
+
+<div class="pricing-card featured reveal">
+<span class="pricing-badge">★ Populaire</span>
+<h3>Coaching Personnalisé</h3>
+<p class="pricing-tagline">Le sur-mesure : 4 séances individuelles et un suivi rapproché.</p>
+<div class="pricing-price">395 €</div>
+<div class="pricing-period">Accès 30 jours</div>
+<div class="pricing-divider"></div>
+<ul>
+<li><strong>4 séances de coaching personnalisé (1h)</strong></li>
+<li>Accès aux contenus vidéo (30 jours)</li>
+<li>Messagerie instantanée avec votre coach</li>
+<li>Plan d'objectifs personnalisé</li>
+</ul>
+<a href="https://paypal.me/VOTRE_PAYPAL_ME/395EUR" target="_blank" rel="noopener" class="btn btn-accent" style="width:100%">Choisir Personnalisé</a>
+</div>
+
+<div class="pricing-card reveal">
+<h3>Premium</h3>
+<p class="pricing-tagline">L'expérience la plus complète : 1 an d'accompagnement et la communauté.</p>
+<div class="pricing-price">599 €</div>
+<div class="pricing-period">Accès 365 jours</div>
+<div class="pricing-divider"></div>
+<ul>
+<li>Accès aux contenus vidéo <strong>(365 jours)</strong></li>
+<li><strong>6 séances de coaching personnalisé</strong></li>
+<li>Messagerie instantanée avec votre coach</li>
+<li>Accès à la communauté privée</li>
+</ul>
+<a href="https://paypal.me/VOTRE_PAYPAL_ME/599EUR" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%">Choisir Premium</a>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section-alt">
+<div class="container">
+<div style="text-align:center;max-width:680px;margin:0 auto 3rem" class="reveal">
+<span class="eyebrow">Comparer les formules</span>
+<h2>D'un coup d'œil</h2>
+</div>
+<div class="compare reveal">
+<div class="compare-row head"><div class="compare-cell">Inclus dans la formule</div><div class="compare-cell">Essentiel</div><div class="compare-cell">Personnalisé</div><div class="compare-cell">Premium</div></div>
+<div class="compare-row"><div class="compare-cell">Durée d'accès</div><div class="compare-cell">30 j</div><div class="compare-cell">30 j</div><div class="compare-cell">365 j</div></div>
+<div class="compare-row"><div class="compare-cell">Contenus vidéo</div><div class="compare-cell"><span class="check">✓</span></div><div class="compare-cell"><span class="check">✓</span></div><div class="compare-cell"><span class="check">✓</span></div></div>
+<div class="compare-row"><div class="compare-cell">Coaching de groupe</div><div class="compare-cell"><span class="check">✓</span></div><div class="compare-cell"><span class="dash">—</span></div><div class="compare-cell"><span class="dash">—</span></div></div>
+<div class="compare-row"><div class="compare-cell">Séances individuelles</div><div class="compare-cell"><span class="dash">—</span></div><div class="compare-cell">4 × 1h</div><div class="compare-cell">6 séances</div></div>
+<div class="compare-row"><div class="compare-cell">Messagerie instantanée</div><div class="compare-cell"><span class="dash">—</span></div><div class="compare-cell"><span class="check">✓</span></div><div class="compare-cell"><span class="check">✓</span></div></div>
+<div class="compare-row"><div class="compare-cell">Communauté privée</div><div class="compare-cell"><span class="dash">—</span></div><div class="compare-cell"><span class="dash">—</span></div><div class="compare-cell"><span class="check">✓</span></div></div>
+<div class="compare-row" style="background:#fafaf5"><div class="compare-cell"><strong>Tarif</strong></div><div class="compare-cell"><strong>297 €</strong></div><div class="compare-cell"><strong>395 €</strong></div><div class="compare-cell"><strong>599 €</strong></div></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div style="text-align:center;max-width:680px;margin:0 auto 3rem" class="reveal">
+<span class="eyebrow">Vos questions</span>
+<h2>On vous répond</h2>
+</div>
+<div class="faq">
+<div class="faq-item reveal"><button class="faq-question">Comment se passe l'inscription ?<span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Vous choisissez votre formule, vous payez via PayPal, et vous recevez vos accès par courriel sous 24h. Pour les formules avec séances individuelles, je vous écris pour fixer ensemble les premiers créneaux.</div></div></div>
+<div class="faq-item reveal"><button class="faq-question">Sur quelle plateforme se déroulent les séances ?<span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Les séances individuelles ont lieu en visioconférence via Zoom ou Google Meet, au choix. Vous recevez le lien par courriel avant chaque rendez-vous.</div></div></div>
+<div class="faq-item reveal"><button class="faq-question">Puis-je changer de formule en cours de route ?<span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Oui, vous pouvez passer à une formule supérieure à tout moment. Le montant déjà payé est déduit du nouveau tarif. Écrivez-moi pour qu'on organise ça simplement.</div></div></div>
+<div class="faq-item reveal"><button class="faq-question">Que se passe-t-il à la fin de mon accès ?<span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">À la fin de la période (30 ou 365 jours), votre accès aux contenus vidéo et à la communauté se ferme automatiquement. Vous pouvez renouveler à tout moment au tarif en vigueur.</div></div></div>
+<div class="faq-item reveal"><button class="faq-question">Puis-je obtenir un remboursement si je change d'avis ?<span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Conformément à la législation en vigueur, vous disposez d'un délai de rétractation de 14 jours à compter de votre achat, tant que vous n'avez pas commencé à consulter les contenus. Pour toute demande, écrivez-moi à classe-en-main@hotmail.com.</div></div></div>
+<div class="faq-item reveal"><button class="faq-question">Et si je ne sais pas quelle formule choisir ?<span class="faq-icon">+</span></button><div class="faq-answer"><div class="faq-answer-inner">Aucun souci : écrivez-moi via la page contact en me décrivant brièvement votre situation et vos objectifs. Je vous oriente vers la formule la plus adaptée — sans engagement.</div></div></div>
+</div>
+</div>
+</section>
+
+<section class="cta-strip">
+<div class="cta-strip-content">
+<h2>Une question avant de vous lancer ?</h2>
+<p>Je suis disponible pour échanger sur votre projet et vous aider à choisir la formule la plus adaptée.</p>
+<div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap"><a href="contact.html" class="btn btn-accent">Me contacter</a></div>
+</div>
+</section>
+</main>
+
+<footer class="site-footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand">
+<div class="logo"><span class="logo-mark">CM</span><span>Classe En Main</span></div>
+<p>Coaching en ligne pour avancer à votre rythme, avec un accompagnement humain et professionnel.</p>
+</div>
+<div>
+<h4>Navigation</h4>
+<ul>
+<li><a href="index.html">Accueil</a></li>
+<li><a href="about.html">À propos</a></li>
+<li><a href="services.html">Services & Tarifs</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4>Contact</h4>
+<ul>
+<li><a href="mailto:classe-en-main@hotmail.com">classe-en-main@hotmail.com</a></li>
+<li>Lun–Ven · 9h–18h</li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">© <span id="year"></span> Classe En Main. Tous droits réservés.</div>
+</div>
+</footer>
+
+<script>
+document.querySelector('.nav-toggle').addEventListener('click',function(){var l=document.querySelector('.nav-links');l.classList.toggle('open');this.setAttribute('aria-expanded',l.classList.contains('open'))});
+var path=(window.location.pathname.split('/').pop()||'index.html');document.querySelectorAll('.nav-links a').forEach(function(a){if(a.getAttribute('href')===path)a.classList.add('active')});
+document.getElementById('year').textContent=new Date().getFullYear();
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+// FAQ accordion
+document.querySelectorAll('.faq-question').forEach(function(btn){btn.addEventListener('click',function(){var item=btn.parentElement,answer=item.querySelector('.faq-answer'),isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(function(o){o.classList.remove('open');o.querySelector('.faq-answer').style.maxHeight=null});if(!isOpen){item.classList.add('open');answer.style.maxHeight=answer.scrollHeight+'px'}})});
+</script>
+</body>
+</html>

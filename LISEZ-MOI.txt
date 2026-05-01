@@ -1,0 +1,207 @@
+═══════════════════════════════════════════════════════
+  CLASSE EN MAIN — METTRE VOTRE SITE EN LIGNE
+  Guide GitHub Pages, étape par étape
+═══════════════════════════════════════════════════════
+
+Bonjour ! Voici votre site, prêt à être mis en ligne sur GitHub.
+
+📁 CE DOSSIER CONTIENT EXACTEMENT 6 ÉLÉMENTS :
+   ✓ index.html       (page d'accueil)
+   ✓ about.html       (à propos)
+   ✓ services.html    (formules + tarifs)
+   ✓ contact.html     (contact)
+   ✓ .nojekyll        (petit fichier technique invisible)
+   ✓ LISEZ-MOI.txt    (ce guide)
+
+✅ TOUT EST INTÉGRÉ DANS LES PAGES (style, animations, etc.)
+   Aucun dossier "assets" ni autre chose à téléverser.
+
+
+═══════════════════════════════════════════════════════
+  ÉTAPE 1 — PRÉVISUALISER LE SITE SUR VOTRE ORDINATEUR
+═══════════════════════════════════════════════════════
+
+Avant de mettre en ligne, vérifiez que tout vous plaît :
+
+→ Double-cliquez simplement sur "index.html"
+   Le site s'ouvre dans votre navigateur internet.
+   Cliquez sur les liens du menu pour naviguer.
+
+Si quelque chose ne vous plaît pas, dites-le-moi avant
+de continuer.
+
+
+═══════════════════════════════════════════════════════
+  ÉTAPE 2 — CRÉER UN COMPTE GITHUB (si pas déjà fait)
+═══════════════════════════════════════════════════════
+
+→ Allez sur :  https://github.com/signup
+→ Entrez votre email, choisissez un mot de passe
+→ Choisissez un nom d'utilisateur
+   (ex: classeenmain — sera dans l'URL de votre site)
+→ Validez votre email
+
+
+═══════════════════════════════════════════════════════
+  ÉTAPE 3 — CRÉER UN NOUVEAU DÉPÔT (REPOSITORY)
+═══════════════════════════════════════════════════════
+
+→ Allez sur :  https://github.com/new
+
+→ Remplissez UNIQUEMENT ces champs :
+
+   ┌─────────────────────────────────────────────────┐
+   │ Repository name :  classe-en-main               │
+   │                                                 │
+   │ Public  ●  Private  ○                          │
+   │ → Cochez PUBLIC                                 │
+   │                                                 │
+   │ ☐ Add a README file                             │
+   │ → NE PAS COCHER  ⚠️ TRÈS IMPORTANT             │
+   │                                                 │
+   │ ☐ Add .gitignore                                │
+   │ → NE PAS COCHER                                 │
+   │                                                 │
+   │ ☐ Choose a license                              │
+   │ → NE PAS COCHER                                 │
+   └─────────────────────────────────────────────────┘
+
+→ Cliquez sur le gros bouton vert :
+   "Create repository"
+
+Vous arrivez sur une page avec du texte technique.
+N'ayez pas peur, c'est normal.
+
+
+═══════════════════════════════════════════════════════
+  ÉTAPE 4 — TÉLÉVERSER LES FICHIERS
+═══════════════════════════════════════════════════════
+
+Sur la page du nouveau dépôt vide, cherchez la phrase :
+
+   "uploading an existing file"
+   (c'est un lien souligné en bleu, dans le bloc central)
+
+→ Cliquez sur ce lien
+
+(Si vous ne voyez pas ce lien : cliquez sur le bouton
+"Add file" en haut à droite, puis "Upload files")
+
+Vous arrivez sur une page avec une grande zone qui dit :
+"Drag files here to add them to your repository"
+
+→ Sur votre ordinateur, OUVREZ le dossier
+  "MON-SITE-CLASSE-EN-MAIN"
+  (vous devez voir à l'intérieur les 6 fichiers listés
+   tout en haut de ce guide)
+
+→ Faites Ctrl+A (Windows) ou Cmd+A (Mac) pour TOUT
+  sélectionner d'un coup
+
+→ Glissez-déposez la sélection dans la zone GitHub
+
+→ Attendez que tous les fichiers apparaissent dans la liste
+  (vous devez voir : index.html, about.html, services.html,
+   contact.html, .nojekyll, LISEZ-MOI.txt)
+
+→ Descendez tout en bas de la page
+→ Cliquez sur le bouton vert "Commit changes"
+
+GitHub revient sur la page du dépôt, et cette fois vous
+voyez tous vos fichiers listés. Bravo, fichiers en ligne !
+
+
+═══════════════════════════════════════════════════════
+  ÉTAPE 5 — ACTIVER GITHUB PAGES
+═══════════════════════════════════════════════════════
+
+Pour transformer ces fichiers en site internet visible :
+
+→ En haut de votre dépôt, cliquez sur l'onglet "Settings"
+  (engrenage, à droite des onglets Code, Issues, etc.)
+
+→ Dans le menu de GAUCHE, faites défiler vers le bas
+   et cliquez sur "Pages"
+
+→ Vous voyez une section "Build and deployment"
+
+→ Sous "Source", choisissez :
+   "Deploy from a branch"
+
+→ Sous "Branch", deux menus déroulants apparaissent :
+   • Premier menu :  main
+   • Deuxième menu : / (root)
+
+→ Cliquez sur le bouton "Save"
+
+Un message apparaît :
+"GitHub Pages source saved."
+
+
+═══════════════════════════════════════════════════════
+  ÉTAPE 6 — RÉCUPÉRER L'ADRESSE DE VOTRE SITE
+═══════════════════════════════════════════════════════
+
+→ ATTENDEZ 2 À 5 MINUTES (GitHub doit construire le site)
+
+→ Rafraîchissez la page Settings → Pages
+
+→ Tout en haut apparaît un encadré VERT avec :
+
+   ✅ Your site is live at:
+      https://VOTRENOM.github.io/classe-en-main/
+
+→ C'EST L'ADRESSE DE VOTRE SITE ! 🎉
+   Cliquez dessus pour le voir.
+
+
+═══════════════════════════════════════════════════════
+  EN CAS DE PROBLÈME
+═══════════════════════════════════════════════════════
+
+❌ "Page not found" / "Page introuvable"
+→ Patientez encore quelques minutes (jusqu'à 10 min la
+  première fois). Puis rafraîchissez avec Ctrl+F5.
+
+❌ Le site s'affiche mais sans aucun style (texte brut)
+→ Vous avez oublié le fichier ".nojekyll" lors du upload.
+  Retournez à l'étape 4 et téléversez-le.
+
+❌ "Hi there 👋" s'affiche
+→ Vous avez coché "Add a README file" à l'étape 3.
+  Sur votre dépôt, cliquez sur "README.md", puis sur
+  l'icône poubelle, puis "Commit changes". Attendez 2 min.
+
+❌ Les fichiers sont dans un sous-dossier
+→ Sur votre dépôt, vous voyez un dossier au lieu des
+  fichiers. Vous avez glissé le dossier au lieu de son
+  contenu. Supprimez ce dossier et recommencez l'étape 4
+  en sélectionnant les FICHIERS À L'INTÉRIEUR du dossier.
+
+Pour toute autre question, dites-moi exactement ce que
+vous voyez à l'écran et je vous aide à corriger.
+
+
+═══════════════════════════════════════════════════════
+  POUR PERSONNALISER LES BOUTONS PAYPAL ET LE FORMULAIRE
+═══════════════════════════════════════════════════════
+
+Une fois votre site en ligne, vous pouvez activer :
+
+🔹 LES BOUTONS PAYPAL (dans services.html)
+   Recherchez :  VOTRE_PAYPAL_ME
+   Remplacez par votre identifiant PayPal.me
+   (créé sur https://www.paypal.com/paypalme)
+
+🔹 LE FORMULAIRE DE CONTACT (dans contact.html)
+   Recherchez :  VOTRE_ID_FORMSPREE
+   Remplacez par votre identifiant Formspree
+   (créé gratuitement sur https://formspree.io)
+
+Pour modifier un fichier directement sur GitHub :
+   → Cliquez sur le fichier
+   → Cliquez sur l'icône crayon ✏️ (en haut à droite)
+   → Faites les modifications
+   → Tout en bas : "Commit changes"
+
+═══════════════════════════════════════════════════════

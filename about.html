@@ -80,9 +80,19 @@ section{padding:4rem 0}
 .reveal.visible{opacity:1;transform:translateY(0)}
 @media(max-width:900px){.footer-grid{grid-template-columns:1fr;gap:2rem}section{padding:3rem 0}}
 @media(max-width:720px){.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--cream);flex-direction:column;padding:1rem 1.5rem 1.5rem;border-bottom:1px solid var(--border);box-shadow:var(--shadow-md);gap:1rem}.nav-links.open{display:flex}.nav-toggle{display:block}}
+/* Logo animation */
+.logo-mark{position:relative;animation:logoEntry .8s cubic-bezier(.34,1.56,.64,1) both,logoPulse 4s ease-in-out 1s infinite}
+.logo-mark::after{content:'';position:absolute;inset:-4px;border-radius:50%;background:radial-gradient(circle at 50% 0,var(--gold) 0 3px,transparent 4px);animation:logoOrbit 5s linear infinite;pointer-events:none}
+@keyframes logoEntry{from{opacity:0;transform:scale(.3) rotate(-180deg)}to{opacity:1;transform:scale(1) rotate(0deg)}}
+@keyframes logoPulse{0%,100%{box-shadow:0 1px 3px rgba(15,41,66,.08),0 0 0 0 rgba(201,160,99,.45)}50%{box-shadow:0 1px 3px rgba(15,41,66,.08),0 0 0 10px rgba(201,160,99,0)}}
+@keyframes logoOrbit{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.logo:hover .logo-mark{transform:scale(1.08) rotate(360deg);transition:transform .8s cubic-bezier(.34,1.56,.64,1);animation-play-state:paused}
+.logo:hover .logo-mark::after{animation-duration:2s}
+.scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-dark));width:0;z-index:200;box-shadow:0 0 10px rgba(201,160,99,.5);transition:width .12s ease-out}
 </style>
 </head>
 <body>
+<div class="scroll-progress" id="sp"></div>
 <header class="site-header">
 <nav class="nav" aria-label="Navigation principale">
 <a href="index.html" class="logo"><span class="logo-mark">CM</span><span>Classe En Main</span></a>
@@ -186,6 +196,7 @@ var path=(window.location.pathname.split('/').pop()||'index.html');document.quer
 document.getElementById('year').textContent=new Date().getFullYear();
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:.15});
 document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+window.addEventListener('scroll',function(){var sp=document.getElementById('sp');if(!sp)return;var h=document.documentElement,s=h.scrollTop||document.body.scrollTop,height=h.scrollHeight-h.clientHeight;sp.style.width=(s/height*100)+'%'});
 </script>
 </body>
 </html>

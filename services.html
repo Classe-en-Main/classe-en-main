@@ -106,9 +106,26 @@ section{padding:4rem 0}
 .reveal.visible{opacity:1;transform:translateY(0)}
 @media(max-width:900px){.footer-grid{grid-template-columns:1fr;gap:2rem}section{padding:3rem 0}.pricing-card.featured{transform:none}.pricing-card.featured:hover{transform:translateY(-6px)}.compare-row{grid-template-columns:1.5fr 1fr 1fr 1fr;font-size:.85rem;padding:.8rem}}
 @media(max-width:720px){.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--cream);flex-direction:column;padding:1rem 1.5rem 1.5rem;border-bottom:1px solid var(--border);box-shadow:var(--shadow-md);gap:1rem}.nav-links.open{display:flex}.nav-toggle{display:block}.compare{font-size:.8rem}.compare-row{padding:.7rem .5rem}}
+/* Logo animation */
+.logo-mark{position:relative;animation:logoEntry .8s cubic-bezier(.34,1.56,.64,1) both,logoPulse 4s ease-in-out 1s infinite}
+.logo-mark::after{content:'';position:absolute;inset:-4px;border-radius:50%;background:radial-gradient(circle at 50% 0,var(--gold) 0 3px,transparent 4px);animation:logoOrbit 5s linear infinite;pointer-events:none}
+@keyframes logoEntry{from{opacity:0;transform:scale(.3) rotate(-180deg)}to{opacity:1;transform:scale(1) rotate(0deg)}}
+@keyframes logoPulse{0%,100%{box-shadow:0 1px 3px rgba(15,41,66,.08),0 0 0 0 rgba(201,160,99,.45)}50%{box-shadow:0 1px 3px rgba(15,41,66,.08),0 0 0 10px rgba(201,160,99,0)}}
+@keyframes logoOrbit{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.logo:hover .logo-mark{transform:scale(1.08) rotate(360deg);transition:transform .8s cubic-bezier(.34,1.56,.64,1);animation-play-state:paused}
+.logo:hover .logo-mark::after{animation-duration:2s}
+.scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-dark));width:0;z-index:200;box-shadow:0 0 10px rgba(201,160,99,.5);transition:width .12s ease-out}
+/* Promo strikethrough */
+.price-old{font-size:1.5rem;color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(168,130,73,.7);text-decoration-thickness:2px;margin-right:.7rem;font-weight:500;font-family:var(--font-h);opacity:.65;display:block;line-height:1}
+.promo-badge{position:absolute;top:-14px;right:1.5rem;background:linear-gradient(135deg,#dc2626,#b91c1c);color:#fff;padding:.5rem 1rem;border-radius:6px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transform:rotate(-3deg);box-shadow:0 4px 14px rgba(220,38,38,.4);z-index:3;font-family:var(--font-b);animation:wiggle 3s ease-in-out infinite}
+.promo-badge.left{left:1.5rem;right:auto;transform:rotate(3deg)}
+@keyframes wiggle{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+.save-text{display:inline-block;color:#dc2626;font-weight:700;font-size:.9rem;margin-top:.5rem;background:rgba(220,38,38,.08);padding:.3rem .7rem;border-radius:100px;letter-spacing:.02em}
+.compare-old{display:block;font-size:.75rem;color:var(--muted);text-decoration:line-through;opacity:.6;font-weight:400;font-family:var(--font-b)}
 </style>
 </head>
 <body>
+<div class="scroll-progress" id="sp"></div>
 <header class="site-header">
 <nav class="nav" aria-label="Navigation principale">
 <a href="index.html" class="logo"><span class="logo-mark">CM</span><span>Classe En Main</span></a>
@@ -136,10 +153,13 @@ section{padding:4rem 0}
 <div class="container">
 <div class="pricing-grid">
 <div class="pricing-card reveal">
+<span class="promo-badge left">-25%</span>
 <h3>Coaching Essentiel</h3>
 <p class="pricing-tagline">Idéal pour démarrer en douceur dans une dynamique de groupe.</p>
+<span class="price-old">397 €</span>
 <div class="pricing-price">297 €</div>
 <div class="pricing-period">Accès 30 jours</div>
+<span class="save-text">💰 Vous économisez 100 €</span>
 <div class="pricing-divider"></div>
 <ul>
 <li>Accès aux contenus vidéo (30 jours)</li>
@@ -152,10 +172,13 @@ section{padding:4rem 0}
 
 <div class="pricing-card featured reveal">
 <span class="pricing-badge">★ Populaire</span>
+<span class="promo-badge">-20%</span>
 <h3>Coaching Personnalisé</h3>
 <p class="pricing-tagline">Le sur-mesure : 4 séances individuelles et un suivi rapproché.</p>
+<span class="price-old">495 €</span>
 <div class="pricing-price">395 €</div>
 <div class="pricing-period">Accès 30 jours</div>
+<span class="save-text">💰 Vous économisez 100 €</span>
 <div class="pricing-divider"></div>
 <ul>
 <li><strong>4 séances de coaching personnalisé (1h)</strong></li>
@@ -167,10 +190,13 @@ section{padding:4rem 0}
 </div>
 
 <div class="pricing-card reveal">
+<span class="promo-badge left">-25%</span>
 <h3>Premium</h3>
 <p class="pricing-tagline">L'expérience la plus complète : 1 an d'accompagnement et la communauté.</p>
+<span class="price-old">799 €</span>
 <div class="pricing-price">599 €</div>
 <div class="pricing-period">Accès 365 jours</div>
+<span class="save-text">💰 Vous économisez 200 €</span>
 <div class="pricing-divider"></div>
 <ul>
 <li>Accès aux contenus vidéo <strong>(365 jours)</strong></li>
